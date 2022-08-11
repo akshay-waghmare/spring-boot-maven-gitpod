@@ -13,18 +13,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ArrayToListTests {
 
     @Test
-    public void givenAnStringArray_whenConvertedToList_thenListIsReturned(){
+    public void givenAnStringArray_whenConvertedToList_thenListIsReturned() {
 
-        String[] stringArray = {"mahendra" , "maruti" , "hundai" };
-
+        String[] stringArray = { "mahendra", "maruti", "hundai" };
         List<String> stringList = Arrays.asList(stringArray);
 
         assertNotNull(stringList);
-        assertEquals(stringList.size(),3);
-        assertEquals(stringList.get(0),"mahendra");
-        assertEquals(stringList.get(1),"maruti");
-        assertEquals(stringList.get(2),"hundai");
+        assertEquals(stringList.size(), 3);
+        assertEquals(stringList.get(0), "mahendra");
+        assertEquals(stringList.get(1), "maruti");
+        assertEquals(stringList.get(2), "hundai");
 
     }
-    
+
 }
