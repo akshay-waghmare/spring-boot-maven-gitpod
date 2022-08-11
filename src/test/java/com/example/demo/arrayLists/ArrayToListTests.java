@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
+
 @SpringBootTest
 public class ArrayToListTests {
 
@@ -26,4 +29,15 @@ public class ArrayToListTests {
 
     }
 
+    @Test
+    public void givenAnIntArray_whenConvertedArrayToList_thenArrayWithOneElementIsCreated() {
+
+        int[] intArray = { 1, 2, 3, 4, 5 };
+        List<int[]> asList = Arrays.asList(intArray);
+
+        assertNotNull(asList);
+        assertEquals(asList.size(), 1);
+        assertEquals(asList.get(0)[1], 2);
+
+    }
 }
