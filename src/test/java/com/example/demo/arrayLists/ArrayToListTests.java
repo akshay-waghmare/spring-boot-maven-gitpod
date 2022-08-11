@@ -9,8 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest
 public class ArrayToListTests {
