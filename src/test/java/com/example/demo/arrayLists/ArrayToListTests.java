@@ -64,5 +64,18 @@ public class ArrayToListTests {
 
     }
 
+    @Test
+    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsUnsopported(){
+
+        String[] fruitList = {"apple","banana","orange","banana"};
+        List<String> asList = Arrays.asList(fruitList);
+
+        assertNotNull(asList);
+        assertEquals(asList.get(0),"apple");
+        assertThrows(UnsupportedOperationException.class, () -> asList.remove("apple"));
+
+    }
+
+
 
 }
