@@ -2,6 +2,7 @@ package com.example.demo.arrayLists;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,4 +39,30 @@ public class ArrayToListTests {
         assertEquals(asList.get(0)[1], 2);
 
     }
+
+    @Test
+    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsError(){
+
+        String[] fruitList = {"apple","banana","orange","banana"};
+        List<String> asList = Arrays.asList(fruitList);
+
+        assertNotNull(asList);
+        assertEquals(asList.get(0),"apple");
+        assertThrows(UnsupportedOperationException.class, () -> asList.remove("apple"));
+
+    }
+
+    @Test
+    public void givenAnStringArray_whenConvertedToListAndAddAnElement_thenThrowsUnsopported(){
+
+        String[] fruitList = {"apple","banana","orange","banana"};
+        List<String> asList = Arrays.asList(fruitList);
+
+        assertNotNull(asList);
+        assertEquals(asList.get(0),"apple");
+        assertThrows(UnsupportedOperationException.class, () -> asList.add("jackfruit"));
+
+    }
+
+
 }
