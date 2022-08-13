@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 
 @SpringBootTest
 public class ArrayToListTests {
@@ -41,41 +41,55 @@ public class ArrayToListTests {
     }
 
     @Test
-    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsError(){
+    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsError() {
 
-        String[] fruitList = {"apple","banana","orange","banana"};
+        String[] fruitList = { "apple", "banana", "orange", "banana" };
         List<String> asList = Arrays.asList(fruitList);
 
         assertNotNull(asList);
-        assertEquals(asList.get(0),"apple");
+        assertEquals(asList.get(0), "apple");
         assertThrows(UnsupportedOperationException.class, () -> asList.remove("apple"));
 
     }
 
     @Test
-    public void givenAnStringArray_whenConvertedToListAndAddAnElement_thenThrowsUnsopported(){
+    public void givenAnStringArray_whenConvertedToListAndAddAnElement_thenThrowsUnsopported() {
 
-        String[] fruitList = {"apple","banana","orange","banana"};
+        String[] fruitList = { "apple", "banana", "orange", "banana" };
         List<String> asList = Arrays.asList(fruitList);
 
         assertNotNull(asList);
-        assertEquals(asList.get(0),"apple");
+        assertEquals(asList.get(0), "apple");
         assertThrows(UnsupportedOperationException.class, () -> asList.add("jackfruit"));
 
     }
 
     @Test
-    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsUnsopported(){
+    public void givenAnStringArray_whenConvertedToListAndRemoveAnElement_thenThrowsUnsopported() {
 
-        String[] fruitList = {"apple","banana","orange","banana"};
+        String[] fruitList = { "apple", "banana", "orange", "banana" };
         List<String> asList = Arrays.asList(fruitList);
 
         assertNotNull(asList);
-        assertEquals(asList.get(0),"apple");
+        assertEquals(asList.get(0), "apple");
+        //cannot do structural modification as returned array is immutable
         assertThrows(UnsupportedOperationException.class, () -> asList.remove("apple"));
 
     }
 
+    @Test
+    public void givenAnStringArray_whenConvertedToListAndCreateList_thenCanRemoveOrAddElement(){
+        String[] fruitList = { "apple", "banana", "orange", "banana" };
+        List<String> asList = Arrays.asList(fruitList);
 
+        ArrayList<String> arrayList = new ArrayList<>(asList);
+        assertNotNull(arrayList);;
+        assertEquals(arrayList.get(0),"apple");
+        //now you can add if you convert to Create a new ArrayList from existing one
+        arrayList.add(0, "pineapple");
+        assertEquals(arrayList.get(0), "pineapple");
+
+
+    }
 
 }
